@@ -55,6 +55,6 @@ If there is conflict between two members, they will try to resolve it in a polit
 matter will be brought up with other group members who will then come to a final decision with respect to the conflict. If all the members unanimously 
 are not able to resolve the conflict or cause more conflicts, the matter will be brought up to a neutral third person party who will then help resolve 
 the problem. 
-
+ 
 Signed:
 Caleb Kong, calebk3
