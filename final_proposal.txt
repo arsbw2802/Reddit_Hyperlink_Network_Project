@@ -10,11 +10,11 @@ Group Final Project Proposal
 Project Topic: Reddit HyperLink Network
 
 Given public Reddit data for 2.5 years - Jan 2014 to April 2017 - the nodes of our graph will be the subreddit pages and the edges will be 
-the hyperlinks connecting every subreddit. 
+the hyperlinks connecting every subreddit. The weight will be the sentiment of the source towards the target: -1 if it is negative and 1 if 
+it is positive or neutral.
 
 Leading Question: How is the Reddit community connected (i.e. what are common interests of Reddit users), and what are the most popular subreddit 
 pages? Our project will be a more general tool that focuses on providing statistics and visual info about the data, that the user can then analyze.
-
 
 Dataset acquisition and Processing 
 Dataset: http://snap.stanford.edu/data/soc-RedditHyperlinks.html
@@ -50,7 +50,7 @@ Our proposed timeline is as follows:
 Identifying the tsv parsing algorithm or library 
 Cleaning up and normalizing the raw data, preprocess data (Nov 14)
 Using the processed data, create a graph using one of the following graph implementation methods: edge list, adjacency matrix or adjacency list. 
-Implement DFS traversal (Nov 21)
+Implement BFS traversal (Nov 21)
 Implement Dijkstra’s Shortest Path algorithm using the DFS traversal implemented previously (Nov 28)
 Research and implement Page Rank Algorithm (Dec 5)
 Research libraries to get a visual graph output from the Page rank algorithm. (Dec 12)
