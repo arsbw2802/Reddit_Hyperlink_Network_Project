@@ -28,19 +28,27 @@ We might use something like a strncmp() in order to simplify our data processing
 
 Graph Algorithms 
 Page rank
-We will try to implement the page rank algorithm as this will allow us to rank how important a certain reddit page is and rank them in order how 
+i. We will try to implement the page rank algorithm as this will allow us to rank how important a certain reddit page is and rank them in order how 
 frequently they are visited.
-With regards to how the function signature will look it will need to have a parameter which tells us the damping factor.
+ii. With regards to how the function signature will look it will need to have a parameter which tells us the damping factor.
+iii. The PageRank algorithms is bounded by O(n+m). That’s because to update the page rank value of each vertex, all edges need to be visited in the 
+    worst case scenario Either n or m can dominate the runtime.
+
 
 BFS
-We will try to implement a BFS traversal as this is useful in building Dijkstra’s shortest path algorithm. Dijkstra’s algorithm is basically just BFS, 
+i. We will try to implement a BFS traversal as this is useful in building Dijkstra’s shortest path algorithm. Dijkstra’s algorithm is basically just BFS, 
 but with a priority queue, so it makes sense to use BFS over DFS.
+ii. The time complexity of BFS will be O(n).
 
 Dijkstra’s Shortest Path
-We will use this to see how to go from one subreddit to another subreddit using the least amount of hyperlink connections.
-Dijkstra’s function signature will take in our graph and also the source node from which to find the shortest path to other nodes.
-Since we are also incorporating page rank, it follows that we will be using weighted paths. For example, if we have a higher damping factor, we will 
+i. We will use this to see how to go from one subreddit to another subreddit using the least amount of hyperlink connections.
+ii. Dijkstra’s function signature will take in our graph and also the source node from which to find the shortest path to other nodes.
+iii. Since we are also incorporating page rank, it follows that we will be using weighted paths. For example, if we have a higher damping factor, we will 
 have a lower weight, since there is a decreased probability that the user will get to that subreddit.
+iv. The algorithm needs to first set all vertices with appropriate distances (zero or infinity), which takes O(n) time complexity. As each edge will be visited 
+by adding and popping corresponding vertices into the priority queue, this part will take O(mlog(n)) time complexity. Therefore, the overall time complexity 
+will be O(n + mlog(n)).
+
 
 
 Timeline 
