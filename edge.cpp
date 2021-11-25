@@ -1,17 +1,17 @@
 #include "edge.h"
 
 void Edge::setWeight(int weight) {
-
+	_weight = weight;
 }
 
 double Edge::getWeight() {
-	return 0;
+	return _weight;
 }
 
 void Edge::setSentiment(int sentiment) {
-
+	_sentiment = sentiment;
 }
 
 int Edge::getSentiment() {
-	return 0;
+	return _sentiment;
 }

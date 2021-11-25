@@ -5,17 +5,18 @@
 using std::string;
 
 void Vertex::setSubreddit(string subreddit) {
-
+	_subreddit = subreddit;
 }
 
 string Vertex::getSubreddit() {
-	
-}
-
-int Vertex::getUniqueID() {
-	return 0;
+	return _subreddit;
 }
 
 void Vertex::setUniqueID(int ID) {
-
+	_unique_ID = ID;
 }
+
+int Vertex::getUniqueID() {
+	return _unique_ID;
+}
+

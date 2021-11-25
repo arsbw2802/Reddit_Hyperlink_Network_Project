@@ -8,8 +8,8 @@ class Vertex {
 	public:
 		void setSubreddit(string subreddit);
 		string getSubreddit();
-		int getUniqueID();
 		void setUniqueID(int ID);
+		int getUniqueID();
 	
 	private:
 		string _subreddit;		// name of current subreddit

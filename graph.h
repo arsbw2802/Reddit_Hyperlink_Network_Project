@@ -1,10 +1,15 @@
 #pragma once
 
+#include "vector.h"
+#include "edge.h"
 #include <string>
 #include <vector>
+#include <map>
 
 using std::vector;
 using std::string;
+using std::map;
+
 
 class Graph {
 	public:
@@ -17,9 +22,9 @@ class Graph {
 
 	private:
 		// adjacency matrix (2D vector of edge pointers)
-		vector<vector<>>;
-
-		std::map<string, int> map_UniqueID;
+		vector<vector<Edge*>> _AdjacencyMatrix;
+	
+		map<string, int> map_UniqueID;
 
 
 		
