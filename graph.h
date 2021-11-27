@@ -1,6 +1,6 @@
 #pragma once
 
-#include "vector.h"
+#include "vertex.h"
 #include "edge.h"
 #include <string>
 #include <vector>
@@ -13,7 +13,7 @@ using std::map;
 
 class Graph {
 	public:
-		Graph(vector<Vertex> target, vector<Vertex> source, vector<Vertex> sentiment);
+		Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment);
 		
 		// create a map
 		void assignID(vector<Vertex> target, vector<Vertex> source);

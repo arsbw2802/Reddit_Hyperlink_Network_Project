@@ -12,8 +12,28 @@ using std::map;
 #define INCOMING 0
 #define OUTGOING 1
 
-Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<Vertex> sentiment) {
+Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment) {
 
+    assignID(target, source);
+    int size = map_UniqueID.size();
+    for(int j = 0; j < size; j++){
+        vector<Edge*> v;
+        for(int i = 0; i < size; i++){
+            v.push_back(NULL);
+        }
+        _AdjacencyMatrix.push_back(v);
+    }
+
+    for(int i = 0; i < target.size(); i++){
+        string target_name = target[i].getSubreddit();
+        int target_id = map_UniqueID[target_name];
+        string source_name = source[i].getSubreddit();
+        int source_id = map_UniqueID[source_name];
+
+        Edge* e = new Edge();
+        e->setSentiment(sentiment[i]);
+        _AdjacencyMatrix[source_id][target_id] = e;
+    }
 }
 
 void Graph::assignID(vector<Vertex> target, vector<Vertex> source) {
