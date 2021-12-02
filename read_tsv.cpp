@@ -1,8 +1,8 @@
 #include "read_tsv.h"
 
 
-int main() {
-// void read_data() {
+// int main() {
+void read_data(vector<string> target, vector <string>source, vector <string>sentiment) {
 
 	string filename, column, headers;
 	vector<double> data, tempData;
@@ -19,7 +19,6 @@ int main() {
 	
 	cout << headers << endl;
 
-	// read_tsv( (char*) "test.tsv");
 
 	std::vector<string> values;
 	while(!dataFile.eof()) {
@@ -37,7 +36,8 @@ int main() {
 	unsigned num_cols = 6;
 	unsigned col_access = 1;
 
-	vector <string> source, target, sentiment;
+	// vector <string> source, target, sentiment;
+	// vector<vector<string>> data;
 	for (unsigned i = 0; i < values.size()/num_cols; i++) {
 		// cout << values[num_cols*i + col_access] << endl;
 		source.push_back(values[num_cols*i + SOURCE_COL]);				// extract data into source column vector

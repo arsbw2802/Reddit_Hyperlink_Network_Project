@@ -14,4 +14,4 @@ class Vertex {
 	private:
 		string _subreddit;		// name of current subreddit
 		int _unique_ID;
-}
+};

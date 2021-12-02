@@ -16,5 +16,5 @@ using std::endl;
 #define TARGET_COL		1
 #define SENTIMENT_COL	4
 
-int read_data();
-// void read_data();
+// int read_data();
+void read_data(vector<string> target, vector <string>source, vector <string>sentiment);
