@@ -12,7 +12,7 @@ was decided to be the following: Page Rank algorithm, BFS traversal and Dijkstra
 and traversal with respect to the dataset is given in the project proposal. Once we had the necessary algorithms decided, we made a rough timeline of when to complete
 which task. 
 
-**Week 2 (November 14 - 20) **
+**Week 2 (November 14 - 20)**
 
 All the members worked on cleaning up and processing the raw data from the dataset. We also worked on writing a parsing algorithm for the data which was in a 
 tsv (tab separted value) format. 
@@ -21,7 +21,7 @@ classes: the Edge class, the Graph class and the Vertex class along with member 
 and then segregated the work among all the members. The group was divided into two pairs (to reduce git merge issues) and each pair was given a certain 
 class / certain functions to work on for the next week which was the thanksgiving break week. 
 
-**Week 3 (November 21 - 27) **
+**Week 3 (November 21 - 27)**
 
 This week consisted of both the pairs working on their given task individually. We finished writing the class functions which are in the files Edge.cpp, Vertex.cpp 
 and Graph.cpp. For the edge class, we wrote the getter and setter functions for the two member variables - _ _weight_ and _ _sentiment_. Similarly, for the Vertex class,
