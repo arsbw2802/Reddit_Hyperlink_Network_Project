@@ -1,8 +1,8 @@
-EXENAME = //add 
-OBJS = //add
+EXENAME = finalproject 
+OBJS = graph.o vertex.o edge.o
 
 CXX = clang++
-CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic // is this much enough or do we add more stuff to this?
+CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic 
 LD = clang++
 LDFLAGS = -std=c++1y -stdlib=libc++ -lc++abi -lm
 
@@ -32,9 +32,16 @@ output_msg: ; $(CLANG_VERSION_MSG)
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
 
-// add a bunch of stuff here 
+graph.o: graph.cpp graph.h
+	$(CXX) $(CXXFLAGS) graph.cpp
+
+vertex.o: vertex.cpp vertex.h
+	$(CXX) $(CXXFLAGS) vertex.cpp
+
+edge.o: edge.cpp edge.h
+	$(CXX) $(CXXFLAGS) cedge.cpp
 
 clean:
-	-rm -f *.o $(EXENAME) test // do i need to make any changes to this
+	-rm -f *.o $(EXENAME) test 
   
 remake: clean all
