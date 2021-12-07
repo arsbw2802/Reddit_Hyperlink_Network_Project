@@ -1,6 +1,6 @@
 ## Development Log: RunTime Terror 4
 
-**(This development log was being kept on a seperate Google document and is now being uplaoded to GitHub)**
+**(This development log was being kept on a seperate Google document and is now being uploaded to GitHub)**
 
 **Week 1 (November 8 - 13)**
 
