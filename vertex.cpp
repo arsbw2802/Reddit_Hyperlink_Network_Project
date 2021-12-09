@@ -4,6 +4,10 @@
 
 using std::string;
 
+Vertex::Vertex(string subreddit) {
+	_subreddit = subreddit;
+}
+
 void Vertex::setSubreddit(string subreddit) {
 	_subreddit = subreddit;
 }

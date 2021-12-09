@@ -14,13 +14,28 @@ using std::cout;
 using std::endl;
 
 int main() {
-	vector<string> target, source, sentiment;
-	// source.resize(1);
-	// target.resize(1);
-	// sentiment.resize(1);
-	read_data(target, source, sentiment);
-
-	// Graph(target, source, sentiment);
+	// create vectors for target, source, and sentiment
+	vector<string> target_data, source_data, sentiment_data;
+	// parse data and put into vectors
+	read_data(target_data, source_data, sentiment_data);
+	
+	vector<Vertex> source, target;
+	vector<int> sentiment;
+	
+	// int temp;
+	// for (unsigned i = 0; i < target.size(); i++) {
+	for (unsigned i = 0; i < NUM_COLS; i++) {
+		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
+		target.push_back(Vertex(target_data[i]));
+		sentiment.push_back(stoi(sentiment_data[i]));
+		// sentiment.push_back((int)sentiment_data[i]);
+	}
+	cout << "finished converting vertex\n";
+	cout << sentiment[0] << endl;
+	// Graph full_graph = Graph(target, source, sentiment);
+	Graph short_graph = Graph(target, source, sentiment);
+	short_graph.printMatrix();
+	// cout << short_graph
 
 	return 0;
 }

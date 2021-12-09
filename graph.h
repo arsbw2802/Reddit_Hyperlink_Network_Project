@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <iostream>
 
 using std::vector;
 using std::string;
@@ -19,6 +20,10 @@ class Graph {
 		void assignID(vector<Vertex> target, vector<Vertex> source);
 
 		vector<int> findAdjacentVertices(int vertex, int flag);
+
+		Vertex pageRank(int max_iteration);
+
+		void printMatrix();
 
 	private:
 		// adjacency matrix (2D vector of edge pointers)

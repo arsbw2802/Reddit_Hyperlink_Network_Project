@@ -6,6 +6,7 @@ using std::string;
 
 class Vertex {
 	public:
+		Vertex(string subreddit);
 		void setSubreddit(string subreddit);
 		string getSubreddit();
 		void setUniqueID(int ID);

@@ -2,15 +2,16 @@
 
 
 // int main() {
-void read_data(vector<string> target, vector <string>source, vector <string>sentiment) {
+void read_data(vector<string> &target, vector <string>&source, vector <string>&sentiment) {
 
 	string filename, column, headers;
 	vector<double> data, tempData;
 	int numColumn = 0;
 
 	ifstream dataFile;
-	cout << "enter a filename" << endl;
-	cin >> filename;
+	// cout << "enter a filename" << endl;
+	// cin >> filename;
+	filename = "reddit_title.tsv";
 	dataFile.open(filename);
 	// cout << "enter a column name" << endl;
 	// cin >> column;
@@ -45,9 +46,9 @@ void read_data(vector<string> target, vector <string>source, vector <string>sent
 		sentiment.push_back(values[num_cols*i + SENTIMENT_COL]);		// sentiment vector
 	}
 
-	for (unsigned i = 0; i < source.size(); i++) {						// printing data: Source, Target, Sentiment
+	for (unsigned i = 0; i < NUM_COLS; i++) {						// printing data: Source, Target, Sentiment
 		cout << source[i] << " " << target[i] << " " << sentiment[i] << endl;
 	}
 
-	return 0;
+	// return 0;
 }
