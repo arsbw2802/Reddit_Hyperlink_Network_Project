@@ -1,5 +1,5 @@
 EXENAME = finalproject 
-OBJS = graph.o vertex.o edge.o
+OBJS = graph.o vertex.o edge.o main.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic 
@@ -31,6 +31,8 @@ output_msg: ; $(CLANG_VERSION_MSG)
 
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
+main.o:
+	$(CXX) $(CXXFLAGS) main.cpp
 
 graph.o: graph.cpp graph.h
 	$(CXX) $(CXXFLAGS) graph.cpp
@@ -39,7 +41,7 @@ vertex.o: vertex.cpp vertex.h
 	$(CXX) $(CXXFLAGS) vertex.cpp
 
 edge.o: edge.cpp edge.h
-	$(CXX) $(CXXFLAGS) cedge.cpp
+	$(CXX) $(CXXFLAGS) edge.cpp
 
 clean:
 	-rm -f *.o $(EXENAME) test 
