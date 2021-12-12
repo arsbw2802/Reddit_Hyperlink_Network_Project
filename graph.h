@@ -30,6 +30,8 @@ class Graph {
 
 		string get_Subreddit_ID(int index);
 
+		int get_Unique_ID(string reddit);
+
 	private:
 		// adjacency matrix (2D vector of edge pointers)
 		vector<vector<Edge*>> _AdjacencyMatrix;

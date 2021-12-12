@@ -163,3 +163,7 @@ vector<int> Graph::BFS(int source){
 string Graph::get_Subreddit_ID(int index) {
     return _subreddit_map[index];
 }
+
+int Graph::get_Unique_ID(string reddit) {
+    return map_UniqueID[reddit];
+}

@@ -2,6 +2,7 @@
 #include "vertex.h"
 #include "edge.h"
 #include "graph.h"
+#include "user_interface.h"
 
 #include <iostream>
 #include <string>
@@ -33,6 +34,8 @@ int main() {
 	cout << "finished converting vertex\n";
 	// cout << sentiment[0] << endl;
 	Graph full_graph = Graph(target, source, sentiment);
+	get_user_input(&full_graph);
+
 	// Graph short_graph = Graph(target, source, sentiment);
 	// short_graph.printMatrix();
 
@@ -42,18 +45,18 @@ int main() {
 	// 	cout << it;
 	// }
 
-	int start_vertex = 0;
-	for (int i = 0; i < 1; i++) {
-		// int start_vertex = rand() % NUM_COLS;
-		// start_vertex = 0;
-		vector <int> BFS_output = full_graph.BFS(start_vertex);
-		cout << "\nBFS Traversal #" << start_vertex << endl;
-		for (vector<int>::iterator it = BFS_output.begin(); it != BFS_output.end(); ++it) {
-			cout << *it << " \n";
-		}
-	}
+	// int start_vertex = 0;
+	// for (int i = 0; i < 1; i++) {
+	// 	// int start_vertex = rand() % NUM_COLS;
+	// 	// start_vertex = 0;
+	// 	vector <int> BFS_out = full_graph.BFS(start_vertex);
+	// 	cout << "\nBFS Traversal #" << start_vertex << endl;
+	// 	for (vector<int>::iterator it = BFS_out.begin(); it != BFS_out.end(); ++it) {
+	// 		cout << *it << " \n";
+	// 	}
+	// }
 	
-	cout << full_graph.get_Subreddit_ID(start_vertex);
+	// cout << full_graph.get_Subreddit_ID(start_vertex);
 	
 	return 0;
 }
