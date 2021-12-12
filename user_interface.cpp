@@ -10,7 +10,7 @@ void get_user_input(Graph * input_graph) {
 	cin >> algorithm;
 	switch (algorithm) {
 		case 1: {
-			while (1) {
+			// while (1) {
 			BFS_start = 8821;
 			cout << endl << "(1) BFS will print the traversal from a given user input. Since the graph is not completely connected, certain starting vertices will have no neighbors.";
 			while (BFS_start < 0 || BFS_start > 8820) {
@@ -31,7 +31,7 @@ void get_user_input(Graph * input_graph) {
 				cout << input_graph->get_Unique_ID(input_graph->get_Subreddit_ID(it)) << " " << input_graph->get_Subreddit_ID(it) << endl;
 				
 			}
-			}
+			// }
 			// cout << input_graph->get_Unique_ID(input_graph->get_Subreddit_ID(BFS_output[0])) << " " << input_graph->get_Subreddit_ID(BFS_output[0]) << endl;
 			break;
 		}
