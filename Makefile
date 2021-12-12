@@ -1,5 +1,5 @@
 EXENAME = finalproject 
-OBJS = graph.o vertex.o edge.o main.o
+OBJS = graph.o vertex.o edge.o main.o user_interface.o read_tsv.o
 
 CXX = clang++
 CXXFLAGS = $(CS225) -std=c++1y -stdlib=libc++ -c -g -O0 -Wall -Wextra -pedantic 
@@ -31,10 +31,11 @@ output_msg: ; $(CLANG_VERSION_MSG)
 
 $(EXENAME): output_msg $(OBJS)
 	$(LD) $(OBJS) $(LDFLAGS) -o $(EXENAME)
-main.o:
+
+main.o: main.cpp
 	$(CXX) $(CXXFLAGS) main.cpp
 
-graph.o: graph.cpp graph.h
+graph.o: graph.cpp graph.h edge.h vertex.h
 	$(CXX) $(CXXFLAGS) graph.cpp
 
 vertex.o: vertex.cpp vertex.h
@@ -42,6 +43,18 @@ vertex.o: vertex.cpp vertex.h
 
 edge.o: edge.cpp edge.h
 	$(CXX) $(CXXFLAGS) edge.cpp
+
+user_interface.o: user_interface.cpp user_interface.h graph.h read_tsv.h vertex.h edge.h
+	$(CXX) $(CXXFLAGS) user_interface.cpp
+
+read_tsv.o: read_tsv.cpp read_tsv.h
+	$(CXX) $(CXXFLAGS) read_tsv.cpp
+
+test: output_msg tests.o graph.o vertex.o edge.o
+	$(LD) tests.o graph.o vertex.o edge.o $(LDFLAGS) -o test
+
+tests.o: tests.cpp catch.hpp graph.h vertex.h edge.h
+	$(CXX) $(CXXFLAGS) tests.cpp
 
 clean:
 	-rm -f *.o $(EXENAME) test 

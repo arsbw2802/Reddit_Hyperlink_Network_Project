@@ -25,7 +25,7 @@ Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment
     }
 
     //Loops over the Target-Source pairs to get the Unique IDs
-    for(int i = 0; i < target.size(); i++){
+    for(unsigned i = 0; i < target.size(); i++){
         string target_name = target[i].getSubreddit();
         int target_id = map_UniqueID[target_name];
         string source_name = source[i].getSubreddit();
@@ -41,7 +41,7 @@ void Graph::assignID(vector<Vertex> target, vector<Vertex> source) {
     int count = 0;
 
     //Goes over both source and target as to cover all the nodes in the Graph
-    for(int i = 0; i<target.size(); i++){
+    for(unsigned i = 0; i<target.size(); i++){
         //Checks if map_UniqueID already has a particular subreddit from Source vector if not then add its to the map
         if(map_UniqueID.find(target[i].getSubreddit()) == map_UniqueID.end()){
             map_UniqueID.insert(std::make_pair(target[i].getSubreddit(), count));
@@ -50,7 +50,7 @@ void Graph::assignID(vector<Vertex> target, vector<Vertex> source) {
         }
     }
     
-    for(int j = 0; j<source.size(); j++){
+    for(unsigned j = 0; j<source.size(); j++){
         //Checks if map_UniqueID already has a particular subreddit from Source vector if not then add its to the map
         if(map_UniqueID.find(source[j].getSubreddit()) == map_UniqueID.end()){
             map_UniqueID.insert(std::make_pair(source[j].getSubreddit(), count));
@@ -65,7 +65,7 @@ vector<int> Graph::findAdjacentVertices(int vertex, int flag) {
     vector<int> adjacent;
     //Checks for edges incoming to vertex
     if(flag == INCOMING){
-        for(int i = 0; i < _AdjacencyMatrix.size(); i++){
+        for(unsigned i = 0; i < _AdjacencyMatrix.size(); i++){
             if(_AdjacencyMatrix[i][vertex] != NULL){
                 adjacent.push_back(i);
             }
@@ -73,7 +73,7 @@ vector<int> Graph::findAdjacentVertices(int vertex, int flag) {
     }
     //Checks for edges outgoing from vertex
     if(flag == OUTGOING){
-        for(int i = 0; i < _AdjacencyMatrix[vertex].size(); i++){
+        for(unsigned i = 0; i < _AdjacencyMatrix[vertex].size(); i++){
             if(_AdjacencyMatrix[vertex][i] != NULL){
                 adjacent.push_back(i);
             }
@@ -98,7 +98,7 @@ vector<double> Graph::pageRank(int max_iteration){
         for(int i = 0; i < size; i++){
             vector<int> in_edge = findAdjacentVertices(i, INCOMING);//Finds all nodes with incoming edges to a vertex
             //For all vertices in in_edge it finds the outgoing nodes
-            for(int j = 0; j < in_edge.size(); j++){
+            for(unsigned j = 0; j < in_edge.size(); j++){
                 vector<int> out_edge = findAdjacentVertices(in_edge[j], OUTGOING);
                 new_rank_val = new_rank_val + (rank[in_edge[j]] / double(out_edge.size()));//updates page rank value
             }
@@ -121,7 +121,7 @@ vector<int> Graph::dijkstra(int startID) {
     vector<bool> visited;
 
     //Sets all the distances to infinite distance(very large number)
-    for(int i = 0; i < map_UniqueID.size(); i++) {
+    for(unsigned i = 0; i < map_UniqueID.size(); i++) {
         distance.push_back(10000);//REMEBER TO CHANGE THIS TO INTMAX
         visited.push_back(false);
     }
@@ -144,7 +144,7 @@ vector<int> Graph::dijkstra(int startID) {
 
         vector<int> adj = findAdjacentVertices(minimumID, OUTGOING);//Finds all nodes which incoming edges from the node with
         // minimumID
-        for(int i = 0; i < adj.size(); i++) {
+        for(unsigned i = 0; i < adj.size(); i++) {
 
             if(visited[adj[i]] != true){//Only if node is not visited we check for distances
                 Edge* edge_ = _AdjacencyMatrix[minimumID][adj[i]];

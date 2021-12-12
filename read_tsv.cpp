@@ -6,7 +6,7 @@ void read_data(vector<string> &target, vector <string>&source, vector <string>&s
 
 	string filename, column, headers;
 	vector<double> data, tempData;
-	int numColumn = 0;
+	// int numColumn = 0;
 
 	ifstream dataFile;
 	// cout << "enter a filename" << endl;
@@ -35,7 +35,7 @@ void read_data(vector<string> &target, vector <string>&source, vector <string>&s
 		data.push_back(0);
 	}
 	unsigned num_cols = 6;
-	unsigned col_access = 1;
+	// unsigned col_access = 1;
 
 	// vector <string> source, target, sentiment;
 	// vector<vector<string>> data;
