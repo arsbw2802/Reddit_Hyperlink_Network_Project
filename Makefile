@@ -1,4 +1,4 @@
-EXENAME = finalproject 
+EXENAME = reddit 
 OBJS = graph.o vertex.o edge.o main.o user_interface.o read_tsv.o
 
 CXX = clang++
