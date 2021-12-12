@@ -46,9 +46,9 @@ void read_data(vector<string> &target, vector <string>&source, vector <string>&s
 		sentiment.push_back(values[num_cols*i + SENTIMENT_COL]);		// sentiment vector
 	}
 
-	for (unsigned i = 0; i < NUM_COLS; i++) {						// printing data: Source, Target, Sentiment
-		cout << source[i] << " " << target[i] << " " << sentiment[i] << endl;
-	}
+	// for (unsigned i = 0; i < NUM_COLS; i++) {						// printing data: Source, Target, Sentiment
+	// 	cout << source[i] << " " << target[i] << " " << sentiment[i] << endl;
+	// }
 
 	// return 0;
 }

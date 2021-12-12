@@ -6,6 +6,7 @@
 #include <vector>
 #include <map>
 #include <iostream>
+#include <queue>
 
 using std::vector;
 using std::string;
@@ -23,7 +24,11 @@ class Graph {
 
 		Vertex pageRank(int max_iteration);
 
+		vector<int> BFS(int source);
+
 		void printMatrix();
+
+		string get_Subreddit_ID(int index);
 
 	private:
 		// adjacency matrix (2D vector of edge pointers)
@@ -31,7 +36,6 @@ class Graph {
 	
 		map<string, int> map_UniqueID;
 
-
-		
+		vector<string> _subreddit_map;
 
 };

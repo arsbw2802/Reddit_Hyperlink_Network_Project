@@ -1,10 +1,12 @@
 #include "graph.h"
+#include <algorithm>
 
 using std::vector;
 using std::string;
 using std::map;
 using std::cout;
 using std::endl;
+using std::queue;
 
 #define INCOMING 0
 #define OUTGOING 1
@@ -38,6 +40,7 @@ void Graph::assignID(vector<Vertex> target, vector<Vertex> source) {
     for(int i = 0; i<target.size(); i++){
         if(map_UniqueID.find(target[i].getSubreddit()) == map_UniqueID.end()){
             map_UniqueID.insert(std::make_pair(target[i].getSubreddit(), count));
+            _subreddit_map.push_back(target[i].getSubreddit());
             count++;
         }
     }
@@ -45,6 +48,7 @@ void Graph::assignID(vector<Vertex> target, vector<Vertex> source) {
     for(int j = 0; j<source.size(); j++){
         if(map_UniqueID.find(source[j].getSubreddit()) == map_UniqueID.end()){
             map_UniqueID.insert(std::make_pair(source[j].getSubreddit(), count));
+            _subreddit_map.push_back(source[j].getSubreddit());
             count++;
         }
     }
@@ -114,4 +118,48 @@ void Graph::printMatrix() {
         cout << it->first << " " << it->second << endl;
 
     }
+}
+
+vector<int> Graph::BFS(int source){
+    int map_size = map_UniqueID.size();
+    vector<bool> visited;
+    vector<int> BFS;
+
+    for (int i = 0; i < map_size; i++){
+        visited.push_back(false);
+    }
+ 
+    // Create a queue for BFS
+    queue<int> queue;
+ 
+    // Mark the current node as visited and enqueue it
+    visited[source] = true;
+    queue.push(source);
+ 
+    while(!queue.empty())
+    {
+        // Dequeue a vertex from queue
+        source = queue.front();
+        BFS.push_back(source); // add the vertex to the vector to be returned 
+        queue.pop();
+ 
+        // Get all adjacent vertices of the dequeued
+        // vertex s. If a adjacent has not been visited,
+        // then mark it visited and enqueue it
+        vector<int> adjacentVertices = findAdjacentVertices(source, OUTGOING);
+
+        for(vector<int>::iterator it = adjacentVertices.begin(); it != adjacentVertices.end(); ++it) {
+            if (!visited[*it])
+            {
+                visited[*it] = true;
+                queue.push(*it);
+            }
+        }
+    }
+    // reverse(BFS.begin(), BFS.end());
+    return BFS;
+}
+
+string Graph::get_Subreddit_ID(int index) {
+    return _subreddit_map[index];
 }
