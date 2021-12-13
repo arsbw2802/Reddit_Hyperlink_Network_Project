@@ -6,15 +6,12 @@ using std::string;
 
 class Edge {
 	public:
-		void setWeight(int weight);
-		double getWeight();
-
-		void setSentiment(int sentiment);
+		Edge();
+		~Edge();
+		Edge(int sentiment);
+		void setSentiment(int sentiment); // getters and setters for sentiment
 		int getSentiment();
 
 	private:
-		double _weight;
 		int _sentiment;
-
-
 };

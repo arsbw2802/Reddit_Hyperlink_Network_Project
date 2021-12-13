@@ -1,5 +1,4 @@
 #include "graph.h"
-#include <queue>
 
 using std::vector;
 using std::string;
@@ -34,6 +33,19 @@ Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment
         Edge* e = new Edge();
         e->setSentiment(sentiment[i]);
         _AdjacencyMatrix[source_id][target_id] = e;//Populates the edge in the Adjacency matric 
+    }
+}
+
+Graph::Graph() {
+    
+}
+
+Graph::~Graph() {
+    for (unsigned i = 0; i < map_UniqueID.size(); i++) {
+        for (unsigned j = 0; j < map_UniqueID.size(); j++) {
+            if (_AdjacencyMatrix[i][j] != NULL)
+                delete _AdjacencyMatrix[i][j];
+        }
     }
 }
 
@@ -122,7 +134,7 @@ vector<int> Graph::dijkstra(int startID) {
 
     //Sets all the distances to infinite distance(very large number)
     for(unsigned i = 0; i < map_UniqueID.size(); i++) {
-        distance.push_back(10000);//REMEBER TO CHANGE THIS TO INTMAX
+        distance.push_back(MAX_DISTANCE);//REMEBER TO CHANGE THIS TO INTMAX
         visited.push_back(false);
     }
 

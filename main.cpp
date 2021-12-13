@@ -28,7 +28,9 @@ int main() {
 	for (unsigned i = 0; i < NUM_COLS; i++) {
 		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
 		target.push_back(Vertex(target_data[i]));
-		sentiment.push_back(stoi(sentiment_data[i]));
+		if (stoi(sentiment_data[i]) == -1)
+			sentiment.push_back(3);
+		else sentiment.push_back(1);
 		// sentiment.push_back((int)sentiment_data[i]);
 	}
 	cout << "finished converting vertex\n";
