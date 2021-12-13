@@ -6,22 +6,22 @@
 * Caleb Kong (NetID: calebk3)
 * Lyuxing He (NetID: lyuxing2)
 
-## Introduction 
+## Introduction
 
-* DataSet 
-The Dataset used for this project is the Reddit Hyperlink Network dataset which came from the Stanford dataset collection. The link to the dataset is given below:
-Dataset: http://snap.stanford.edu/data/soc-RedditHyperlinks.html
-The dataset contains target and source nodes which are connected with edges which have sentiments as weights. BFS is used to list out all the subreddit hyperlinks connected to a chosen subreddit. Djikstra's shortest path is used as a means to find the shortest number of hyperlink clicks needed to go from one subreddit to another. Lastly, Page Rank is used to determine the page rank value of any chosen subreddit. 
+- The Dataset used for this project is the [Reddit Hyperlink Network dataset](http://snap.stanford.edu/data/soc-RedditHyperlinks.html) which came from the Stanford dataset collection.
+- The dataset contains target and source nodes which are connected with edges which have sentiments as weights. BFS is used to list out all the subreddit hyperlinks connected to a chosen subreddit. Djikstra's shortest path is used as a means to find the shortest number of hyperlink clicks needed to go from one subreddit to another. Lastly, Page Rank is used to determine the page rank value of any chosen subreddit. 
 
-* Documentation
-- [Team Contract] (https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/teamcontract.md)
-- [Project Proposal] (https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/final_proposal.md)
-- [Development Log] (https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/Development_log.MD)
+## Documentation 
+- [Team Contract](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/teamcontract.md)
+- [Project Proposal](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/final_proposal.md)
+- [Development Log](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/Development_log.MD)
 - Final Report
 
-* Project Demo
+## Project Demo 
 
 ## Instructions 
+
+### How to run the program 
 
 In order to run the program and get user input, run the following commands:
 - Run `make clean` and then `make` to create the executable of the program to be run. 
@@ -32,7 +32,7 @@ In order to run the program and get user input, run the following commands:
 - If the user chooses option 2, they will be prompted to enter 2 integers. Similar to the BFS, the integers are the Unique IDs corresponsing to subreddits. The first integer is used as the starting node which is used in the Djikstra's shortest path which returns a vector of distances. The second subreddit input is used as a index in the vector to output what the shortest distance (i.e. the minimum number of clicks required to go from one subreddit to the other) between the two chosen subreddits is.    
 - If the user chooses option 3, they will be prompted to enter 2 integers. The first integer is the maximum iterations used in the Page Rank. The second integer is the unique ID of a subreddit. The Page Rank value of this subreddit will then be displayed on the screen. 
 
-* How to run the test cases 
+### How to run the test cases 
 
 We have compiled a few test cases to test our algorithms and traversals which can be run by executing the following commands:
 - Run `make clean && make test`. Give program will take a minute or two to create the test executable.  
