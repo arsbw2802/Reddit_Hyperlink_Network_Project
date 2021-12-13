@@ -59,3 +59,96 @@ TEST_CASE("Dijkstra") {
     REQUIRE(ranks[3] == 4);
 	REQUIRE(ranks[4] == 0);
 }
+
+
+TEST_CASE("BFS w/ small graph") {
+    vector<string> source_data = {"C", "A", "D", "B", "C"};
+	vector<string> target_data = {"A", "D", "B", "C", "D"};
+	vector<string> sentiment_data = {"3", "1", "1", "3", "1"};
+	vector<Vertex> source, target;
+	vector<int> sentiment;
+	
+	for (unsigned i = 0; i < source_data.size(); i++) {
+		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
+		target.push_back(Vertex(target_data[i]));
+		sentiment.push_back(stoi(sentiment_data[i]));
+		
+	}
+
+	Graph small_graph = Graph(target, source, sentiment);
+
+    vector<int> BFS = small_graph.BFS(9);
+
+	for (auto & it : BFS) {
+		std::cout << small_graph.get_Unique_ID(small_graph.get_Subreddit_ID(it)) << " " << small_graph.get_Subreddit_ID(it) << std::endl;
+	}
+
+    REQUIRE(BFS[0] == 0);
+    REQUIRE(BFS[1] == 1);
+    REQUIRE(BFS[2] == 2);
+    REQUIRE(BFS[3] == 3);
+	
+}
+
+
+TEST_CASE("BFS w/ medium graph") {
+    vector<string> source_data = {"A", "A", "B", "B", "C", "D", "E", "E", "E", "F"};
+	vector<string> target_data = {"B", "C", "C", "D", "D","E", "B", "A", "F", "D"};
+	vector<string> sentiment_data = {"3", "1", "1", "3", "1","3", "1", "1", "1", "3"};
+	vector<Vertex> source, target;
+	vector<int> sentiment;
+	
+	for (unsigned i = 0; i < source_data.size(); i++) {
+		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
+		target.push_back(Vertex(target_data[i]));
+		sentiment.push_back(stoi(sentiment_data[i]));
+		
+	}
+
+	Graph med_graph = Graph(target, source, sentiment);
+
+    vector<int> BFS = med_graph.BFS(4);
+
+    REQUIRE(BFS[0] == 4);
+    REQUIRE(BFS[1] ==  0);
+    REQUIRE(BFS[2] ==  1);
+    REQUIRE(BFS[3] == 2);
+	REQUIRE(BFS[4] == 3);
+	REQUIRE(BFS[5] == 5);
+}
+
+TEST_CASE("BFS w/ big graph") {
+    vector<string> source_data = {"A", "B", "C", "C", "D", "D", "E", "F", "F", "G", "G", "H", "I", "J", "J"};
+	vector<string> target_data = {"C", "F", "D", "I", "B", "E", "F", "C", "J", "E", "H", "D", "G", "G", "A"};
+	vector<string> sentiment_data = {"3", "1", "1", "3", "1","3", "1", "1", "1", "3", "3", "1", "1", "3", "1"};
+	vector<Vertex> source, target;
+	vector<int> sentiment;
+	
+	for (unsigned i = 0; i < source_data.size(); i++) {
+		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
+		target.push_back(Vertex(target_data[i]));
+		sentiment.push_back(stoi(sentiment_data[i]));
+		
+	}
+
+	Graph big_graph = Graph(target, source, sentiment);
+
+    vector<int> BFS = big_graph.BFS(9);
+
+	// for (auto & it : BFS) {
+	// 	std::cout << medium_graph.get_Unique_ID(medium_graph.get_Subreddit_ID(it)) << " " << medium_graph.get_Subreddit_ID(it) << std::endl;
+	// }
+
+    REQUIRE(BFS[0] == 9);
+    REQUIRE(BFS[1] == 0);
+    REQUIRE(BFS[2] == 2);
+    REQUIRE(BFS[3] == 3);
+	REQUIRE(BFS[4] == 4);
+	REQUIRE(BFS[5] == 5);
+	REQUIRE(BFS[6] == 8);
+    REQUIRE(BFS[7] == 1);
+    REQUIRE(BFS[8] == 7);
+    REQUIRE(BFS[9] == 6);
+}
+
+
