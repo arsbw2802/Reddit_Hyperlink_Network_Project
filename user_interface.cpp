@@ -83,7 +83,7 @@ void get_user_input(Graph * input_graph) {
 				cin >> iterations;
 			}
 
-			vector<double> page_rank_output = input_graph->pageRank(page_rank_start);
+			vector<double> page_rank_output = input_graph->pageRank(iterations);
 			if (page_rank_output[page_rank_start] == 0) 
 				cout << "The page rank value of " << input_graph->get_Subreddit_ID(page_rank_start) << " is 0, because it is not connected." << endl;
 
