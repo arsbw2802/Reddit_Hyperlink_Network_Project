@@ -41,7 +41,7 @@ In order to run the program and get user input, run the following commands:
 We have compiled a few test cases to test our algorithms and traversals which can be run by executing the following commands:
 - Run `make clean && make test`. Give program will take a minute or two to create the test executable.  
 - Run `./test`
-- The output on the screen will inform you whether all the test cases and assertions have passed or not. There are [] test cases and [] assertions
+- The output on the screen will inform you whether all the test cases and assertions have passed or not. There are 9 test cases and 37 assertions
 
 ## References 
 - https://www.youtube.com/watch?v=P8Kt6Abq_rM
