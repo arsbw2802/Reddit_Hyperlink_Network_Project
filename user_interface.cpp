@@ -3,11 +3,12 @@
 void get_user_input(Graph * input_graph) {
 	int algorithm = 0, BFS_start;
 
-	while (algorithm < 1 || algorithm > 3) {
+	while (algorithm < 1 || algorithm > 4) {
 		cout << "Enter the number corresponding to the algorithm/output you wish to see:" << endl;
 		cout << "(1) BFS" << endl;
 		cout << "(2) Dijkstra's Shortest Path" << endl;
 		cout << "(3) Page Rank" << endl;
+		cout << "(4) Most Popular Reddit" << endl;
 
 		cin >> algorithm;
 	}
@@ -89,6 +90,28 @@ void get_user_input(Graph * input_graph) {
 			else {
 				cout << "The page rank value of " << input_graph->get_Subreddit_ID(page_rank_start) << " is " << page_rank_output[page_rank_start] << endl;
 			}
+			break;
+		}
+		case 4: {
+			cout << endl << "(4) Page Rank will find the most popular subreddit based on the number of iterations chosen." << endl;
+			
+			int iterations = 11;
+			while (iterations < 0 || iterations > 10) {
+				cout << endl << "Please enter a number from [1, 10] for the number of iterations. A higher number indicates higher accuracy of the Page Rank estimate." << endl;
+				cout << "Also note that higher iteration values will take longer time to run, since Page Rank must traverse the whole graph." << endl;
+				cin >> iterations;
+			}
+
+			vector<double> page_rank_output = input_graph->pageRank(iterations);
+			int max = 0, index = 0;
+			for (unsigned i = 0; i < page_rank_output.size(); i++) {
+				if (page_rank_output[i] > max) {
+					max = page_rank_output[i];
+					index = i;
+				}
+			}
+			cout << "The page rank value of " << input_graph->get_Subreddit_ID(index) << " is " << page_rank_output[index] << endl;
+			cout << "This is the most popular subreddit, according to " << iterations << " iterations in the Page Rank algorithm" << endl;
 			break;
 		}
 		default:
