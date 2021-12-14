@@ -63,11 +63,11 @@ class Graph {
 
 		vector<int> BFS(int source);
 
-		void printMatrix();
-
 		string get_Subreddit_ID(int index);
 
 		int get_Unique_ID(string reddit);
+
+		map<string, int> * get_map() ;
 
 	private:
 		// adjacency matrix (2D vector of edge pointers)

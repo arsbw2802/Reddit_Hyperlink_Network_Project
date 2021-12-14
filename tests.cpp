@@ -7,59 +7,6 @@
 
 #include <vector>
 
-// default constructor
-TEST_CASE("Page rank 1") {
-    vector<string> source_data = {"A", "A", "C", "C", "C","B", "D"};
-	vector<string> target_data = {"C", "B", "A", "B", "D","D", "C"};
-	vector<string> sentiment_data = {"-1", "-1", "-1", "-1", "-1","-1", "1"};
-	vector<Vertex> source, target;
-	vector<int> sentiment;
-	
-	
-	
-	for (unsigned i = 0; i < source_data.size(); i++) {
-		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
-		target.push_back(Vertex(target_data[i]));
-		sentiment.push_back(stoi(sentiment_data[i]));
-		
-	}
-
-	Graph short_graph = Graph(target, source, sentiment);
-
-    vector<double> ranks = short_graph.pageRank(2);
-
-    REQUIRE(ranks[0] == 0.375);
-    REQUIRE(ranks[1] ==  Approx(0.166667));
-    REQUIRE(ranks[2] ==  0.125);
-    REQUIRE(ranks[3] == Approx(0.33333333));
-}
-
-TEST_CASE("Dijkstra") {
-    vector<string> source_data = {"A", "A", "D", "D", "B","B", "E"};
-	vector<string> target_data = {"B", "D", "B", "E", "E","C", "C"};
-	vector<string> sentiment_data = {"3", "1", "1", "3", "1","3", "1"};
-	vector<Vertex> source, target;
-	vector<int> sentiment;
-	
-	
-	
-	for (unsigned i = 0; i < source_data.size(); i++) {
-		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
-		target.push_back(Vertex(target_data[i]));
-		sentiment.push_back(stoi(sentiment_data[i]));
-		
-	}
-
-	Graph short_graph = Graph(target, source, sentiment);
-
-    vector<int> ranks = short_graph.dijkstra(4);
-    REQUIRE(ranks[0] == 2);
-    REQUIRE(ranks[1] ==  1);
-    REQUIRE(ranks[2] ==  3);
-    REQUIRE(ranks[3] == 4);
-	REQUIRE(ranks[4] == 0);
-}
-
 
 TEST_CASE("BFS w/ small graph") {
     vector<string> source_data = {"C", "A", "D", "B", "C"};
@@ -77,11 +24,7 @@ TEST_CASE("BFS w/ small graph") {
 
 	Graph small_graph = Graph(target, source, sentiment);
 
-    vector<int> BFS = small_graph.BFS(9);
-
-	for (auto & it : BFS) {
-		std::cout << small_graph.get_Unique_ID(small_graph.get_Subreddit_ID(it)) << " " << small_graph.get_Subreddit_ID(it) << std::endl;
-	}
+    vector<int> BFS = small_graph.BFS(0);
 
     REQUIRE(BFS[0] == 0);
     REQUIRE(BFS[1] == 1);
@@ -135,10 +78,6 @@ TEST_CASE("BFS w/ big graph") {
 
     vector<int> BFS = big_graph.BFS(9);
 
-	// for (auto & it : BFS) {
-	// 	std::cout << medium_graph.get_Unique_ID(medium_graph.get_Subreddit_ID(it)) << " " << medium_graph.get_Subreddit_ID(it) << std::endl;
-	// }
-
     REQUIRE(BFS[0] == 9);
     REQUIRE(BFS[1] == 0);
     REQUIRE(BFS[2] == 2);
@@ -152,3 +91,149 @@ TEST_CASE("BFS w/ big graph") {
 }
 
 
+TEST_CASE("Graph Constructor simple") {
+    vector<string> source_data = {"A", "B"};
+    vector<string> target_data = {"B", "A"};
+    vector<string> sentiment_data = {"-1", "-1"};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+
+
+    REQUIRE(short_graph.get_Subreddit_ID(0) == "B");
+    REQUIRE(short_graph.get_Subreddit_ID(1) == "A");
+    
+    
+}
+
+TEST_CASE("Graph Constructor Empty") {
+    vector<string> source_data = {};
+    vector<string> target_data = {};
+    vector<string> sentiment_data = {};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+
+    REQUIRE(short_graph.get_map()->size() == 0);    
+    
+}
+
+TEST_CASE("Page rank simple") {
+    vector<string> source_data = {"A", "B"};
+    vector<string> target_data = {"B", "A"};
+    vector<string> sentiment_data = {"-1", "-1"};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+    vector<double> ranks = short_graph.pageRank(5);
+
+    REQUIRE(ranks[0] == 0.5);
+    REQUIRE(ranks[1] ==  0.5);
+    
+}
+
+TEST_CASE("Page rank complex") {
+    vector<string> source_data = {"A", "A", "C", "C", "C","B", "D"};
+    vector<string> target_data = {"C", "B", "A", "B", "D","D", "C"};
+    vector<string> sentiment_data = {"-1", "-1", "-1", "-1", "-1","-1", "1"};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+    vector<double> ranks = short_graph.pageRank(2);
+
+    REQUIRE(ranks[0] == 0.375);
+    REQUIRE(ranks[1] ==  Approx(0.166667));
+    REQUIRE(ranks[2] ==  0.125);
+    REQUIRE(ranks[3] == Approx(0.33333333));
+}
+
+
+TEST_CASE("Dijkstra simple") {
+    vector<string> source_data = {"A", "A", "C"};
+    vector<string> target_data = {"B", "C", "B"};
+    vector<string> sentiment_data = {"3", "1", "1"};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+    vector<int> ranks = short_graph.dijkstra(2);
+    REQUIRE(ranks[0] == 2);
+    REQUIRE(ranks[1] ==  1);
+    REQUIRE(ranks[2] ==  0);
+}
+
+TEST_CASE("Dijkstra complex") {
+    vector<string> source_data = {"A", "A", "D", "D", "B","B", "E"};
+    vector<string> target_data = {"B", "D", "B", "E", "E","C", "C"};
+    vector<string> sentiment_data = {"3", "1", "1", "3", "1","3", "1"};
+    vector<Vertex> source, target;
+    vector<int> sentiment;
+    
+    
+    
+    for (unsigned i = 0; i < source_data.size(); i++) {
+        source.push_back(Vertex(source_data[i]));            // convert source and target strings to Vertices
+        target.push_back(Vertex(target_data[i]));
+        sentiment.push_back(stoi(sentiment_data[i]));
+        
+    }
+
+    Graph short_graph = Graph(target, source, sentiment);
+
+    vector<int> ranks = short_graph.dijkstra(4);
+    REQUIRE(ranks[0] == 2);
+    REQUIRE(ranks[1] ==  1);
+    REQUIRE(ranks[2] ==  3);
+    REQUIRE(ranks[3] == 4);
+    REQUIRE(ranks[4] == 0);
+}

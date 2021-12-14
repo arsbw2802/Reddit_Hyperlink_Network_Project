@@ -11,6 +11,8 @@ using std::queue;
 #define OUTGOING 1
 
 Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment) {
+	if (!target.size() || !source.size() || !sentiment.size())
+		return;
 
     assignID(target, source);//Populates the map and gives unique ID's to nodes
     int size = map_UniqueID.size();
@@ -124,10 +126,6 @@ vector<double> Graph::pageRank(int max_iteration){
     return rank;
 }
 
-void Graph::printMatrix() {
-    
-}
-
 vector<int> Graph::dijkstra(int startID) {
     vector<int> distance;
     vector<bool> visited;
@@ -220,4 +218,8 @@ string Graph::get_Subreddit_ID(int index) {
 
 int Graph::get_Unique_ID(string reddit) {
     return map_UniqueID[reddit];
+}
+
+map<string, int> * Graph::get_map() {
+	return &map_UniqueID;
 }
