@@ -17,6 +17,8 @@ using std::endl;
 #define TARGET_COL		1
 #define SENTIMENT_COL	4
 #define NUM_COLS		34324
+#define BODY			1
+#define TITLE			0
 
-// int read_data();
-void read_data(vector<string> &target, vector <string>&source, vector <string>&sentiment);
+
+void read_data(vector<string> &target, vector <string>&source, vector <string>&sentiment, int dataset);

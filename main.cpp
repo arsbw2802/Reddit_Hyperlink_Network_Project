@@ -17,8 +17,15 @@ using std::endl;
 int main() {
 	// create vectors for target, source, and sentiment
 	vector<string> target_data, source_data, sentiment_data;
+
+	// prompt user for input
+	int dataset = 2;
+	while (dataset < 0 || dataset > 1) {
+		cout << "Please select a reddit dataset: 0 for title, 1 for body" << endl;
+		cin >> dataset;
+	}
 	// parse data and put into vectors
-	read_data(target_data, source_data, sentiment_data);
+	read_data(target_data, source_data, sentiment_data, dataset);
 	
 	vector<Vertex> source, target;
 	vector<int> sentiment;
@@ -28,35 +35,16 @@ int main() {
 	for (unsigned i = 0; i < NUM_COLS; i++) {
 		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
 		target.push_back(Vertex(target_data[i]));
-		sentiment.push_back(stoi(sentiment_data[i]));
+		if (stoi(sentiment_data[i]) == -1)
+			sentiment.push_back(3);
+		else sentiment.push_back(1);
 		// sentiment.push_back((int)sentiment_data[i]);
 	}
-	cout << "finished converting vertex\n";
-	// cout << sentiment[0] << endl;
+	cout << "Finished converting strings to vertices\n\n";
+
 	Graph full_graph = Graph(target, source, sentiment);
 	get_user_input(&full_graph);
 
-	// Graph short_graph = Graph(target, source, sentiment);
-	// short_graph.printMatrix();
-
-	// BFS traversal
-	// vector<int> BFS_output = short_graph.BFS(0);
-	// for (auto & it : BFS_output) {
-	// 	cout << it;
-	// }
-
-	// int start_vertex = 0;
-	// for (int i = 0; i < 1; i++) {
-	// 	// int start_vertex = rand() % NUM_COLS;
-	// 	// start_vertex = 0;
-	// 	vector <int> BFS_out = full_graph.BFS(start_vertex);
-	// 	cout << "\nBFS Traversal #" << start_vertex << endl;
-	// 	for (vector<int>::iterator it = BFS_out.begin(); it != BFS_out.end(); ++it) {
-	// 		cout << *it << " \n";
-	// 	}
-	// }
-	
-	// cout << full_graph.get_Subreddit_ID(start_vertex);
 	
 	return 0;
 }

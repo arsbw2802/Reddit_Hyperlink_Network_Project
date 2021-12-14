@@ -8,6 +8,8 @@
 #include <iostream>
 #include <queue>
 
+#define MAX_DISTANCE 	10000
+
 using std::vector;
 using std::string;
 using std::map;
@@ -25,6 +27,9 @@ class Graph {
         **/
 		Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment);
 		
+		Graph();
+
+		~Graph();
 		/**
            * Initialize map_UniqueID/ assign uniqueIDs to all the vertices from target and source
            * @param target - vector of all target nodes
@@ -58,11 +63,11 @@ class Graph {
 
 		vector<int> BFS(int source);
 
-		void printMatrix();
-
 		string get_Subreddit_ID(int index);
 
 		int get_Unique_ID(string reddit);
+
+		map<string, int> * get_map() ;
 
 	private:
 		// adjacency matrix (2D vector of edge pointers)

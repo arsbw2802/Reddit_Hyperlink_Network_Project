@@ -1,5 +1,4 @@
 #include "graph.h"
-#include <queue>
 
 using std::vector;
 using std::string;
@@ -12,6 +11,8 @@ using std::queue;
 #define OUTGOING 1
 
 Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment) {
+	if (!target.size() || !source.size() || !sentiment.size())
+		return;
 
     assignID(target, source);//Populates the map and gives unique ID's to nodes
     int size = map_UniqueID.size();
@@ -34,6 +35,19 @@ Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment
         Edge* e = new Edge();
         e->setSentiment(sentiment[i]);
         _AdjacencyMatrix[source_id][target_id] = e;//Populates the edge in the Adjacency matric 
+    }
+}
+
+Graph::Graph() {
+    
+}
+
+Graph::~Graph() {
+    for (unsigned i = 0; i < map_UniqueID.size(); i++) {
+        for (unsigned j = 0; j < map_UniqueID.size(); j++) {
+            if (_AdjacencyMatrix[i][j] != NULL)
+                delete _AdjacencyMatrix[i][j];
+        }
     }
 }
 
@@ -112,17 +126,13 @@ vector<double> Graph::pageRank(int max_iteration){
     return rank;
 }
 
-void Graph::printMatrix() {
-    
-}
-
 vector<int> Graph::dijkstra(int startID) {
     vector<int> distance;
     vector<bool> visited;
 
     //Sets all the distances to infinite distance(very large number)
     for(unsigned i = 0; i < map_UniqueID.size(); i++) {
-        distance.push_back(10000);//REMEBER TO CHANGE THIS TO INTMAX
+        distance.push_back(MAX_DISTANCE);//REMEBER TO CHANGE THIS TO INTMAX
         visited.push_back(false);
     }
 
@@ -208,4 +218,8 @@ string Graph::get_Subreddit_ID(int index) {
 
 int Graph::get_Unique_ID(string reddit) {
     return map_UniqueID[reddit];
+}
+
+map<string, int> * Graph::get_map() {
+	return &map_UniqueID;
 }
