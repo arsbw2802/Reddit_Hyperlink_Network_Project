@@ -61,12 +61,34 @@ class Graph {
         */
 		vector<int> dijkstra(int startID);
 
+		/**
+		* Given the uniqueID of the source vertex, this function will run BFS on that 
+		* source vertex and return a vector of uniqueIDs that BFS traverses through
+		* @param int source
+		* @return vector<int> vector of uniqueID of the subreddit traversed
+		**/
 		vector<int> BFS(int source);
 
+		/**
+		* Given the uniqueID of the specific vertex, return the subreddit string of
+		* the corresponding uniqueID
+		* @param int index
+		* @return string subreddit title
+		**/
 		string get_Subreddit_ID(int index);
 
+		/**
+		* Given string of subreddit title, return the subreddit uniqueID of the
+		* the corresponding string of subreddit title
+		* @param string reddit
+		* @return int index
+		*/
 		int get_Unique_ID(string reddit);
 
+		/**
+		* Return the map that stores the uniqueID & subreddit pair
+		* @return map<string, int>
+		*/
 		map<string, int> * get_map() ;
 
 	private:
@@ -76,6 +98,7 @@ class Graph {
 		// map subreddits name to uniqueIDs
 		map<string, int> map_UniqueID;
 
+		// vector to store subreddits in 
 		vector<string> _subreddit_map;
 
 };

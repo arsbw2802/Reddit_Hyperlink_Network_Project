@@ -38,11 +38,13 @@ Graph::Graph(vector<Vertex> target, vector<Vertex> source, vector<int> sentiment
     }
 }
 
+// constructor 
 Graph::Graph() {
     
 }
 
 Graph::~Graph() {
+    // loop through the adjacency matrix and call delete on each element 
     for (unsigned i = 0; i < map_UniqueID.size(); i++) {
         for (unsigned j = 0; j < map_UniqueID.size(); j++) {
             if (_AdjacencyMatrix[i][j] != NULL)
@@ -184,7 +186,7 @@ vector<int> Graph::BFS(int source){
     // Create a queue for BFS
     queue<int> queue;
  
-    // Mark the current node as visited and enqueue it
+    // Mark the current vertex as visited and enqueue it
     visited[source] = true;
     queue.push(source);
  
@@ -194,13 +196,13 @@ vector<int> Graph::BFS(int source){
         source = queue.front();
         BFS.push_back(source); // add the vertex to the vector to be returned 
         queue.pop();
- 
-        // Get all adjacent vertices of the dequeued
-        // vertex s. If a adjacent has not been visited,
-        // then mark it visited and enqueue it
+
+
+        // get all adjacent vertices 
         vector<int> adjacentVertices = findAdjacentVertices(source, OUTGOING);
 
         for(vector<int>::iterator it = adjacentVertices.begin(); it != adjacentVertices.end(); ++it) {
+            // if adjacent vertices have not been visited, mark it as visited and enqueue it 
             if (!visited[*it])
             {
                 visited[*it] = true;
@@ -208,18 +210,20 @@ vector<int> Graph::BFS(int source){
             }
         }
     }
-    // reverse(BFS.begin(), BFS.end());
     return BFS;
 }
 
+// get the subreddit string given the uniqueID of that subreddit 
 string Graph::get_Subreddit_ID(int index) {
     return _subreddit_map[index];
 }
 
+// get the uniqueID given the subreddit string of the subreddit
 int Graph::get_Unique_ID(string reddit) {
     return map_UniqueID[reddit];
 }
 
+// get the map that stores uniqueID & subreddit string pair
 map<string, int> * Graph::get_map() {
 	return &map_UniqueID;
 }

@@ -30,15 +30,13 @@ int main() {
 	vector<Vertex> source, target;
 	vector<int> sentiment;
 	
-	// int temp;
-	// for (unsigned i = 0; i < target_data.size(); i++) {
+	// convert source and target strings to Vertices
 	for (unsigned i = 0; i < NUM_COLS; i++) {
-		source.push_back(Vertex(source_data[i]));			// convert source and target strings to Vertices
+		source.push_back(Vertex(source_data[i]));			
 		target.push_back(Vertex(target_data[i]));
 		if (stoi(sentiment_data[i]) == -1)
 			sentiment.push_back(3);
 		else sentiment.push_back(1);
-		// sentiment.push_back((int)sentiment_data[i]);
 	}
 	cout << "Finished converting strings to vertices\n\n";
 

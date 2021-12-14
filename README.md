@@ -15,9 +15,10 @@
 - [Team Contract](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/teamcontract.md)
 - [Project Proposal](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/final_proposal.md)
 - [Development Log](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/BFS/documents/Development_log.MD)
-- Final Report
+- [Final Report](https://github-dev.cs.illinois.edu/cs225-fa21/calebk3-abiswas7-lyuxing2-kartikm3/blob/main/Results.pdf)
 
-## Project Demo 
+## Project Demo
+- Link to the Final Project recording: https://youtu.be/fpR6IwaQE3E  
 
 ## Instructions 
 
@@ -27,10 +28,13 @@ In order to run the program and get user input, run the following commands:
 - Run `make clean` and then `make` to create the executable of the program to be run. 
 - Run `./reddit` to start the program executable created.
 - The user will be asked to choose between two sub datasets: the reddit_title and reddit_body. This is because each post has a title and body. The hyperlinks can be present in either and hence there is a dataset provided for each. 
-- Once the user has chosen the dataset, they will be presented with three options. The user should enter `1` for the BFS traversal, `2` for the Djikstra's shortest path output and `3` for the Page Rank output. 
+- Enter `0` for the reddit_title dataset and `1` for the reddit_body dataset.
+- Once the user has chosen the dataset, they will be presented with four options. The user should enter `1` for the BFS traversal, `2` for the Djikstra's shortest path output, `3` for the Page Rank output and `4` for getting the most popular reddit. 
 - If the user chooses option 1, they will be prompted to enter an integer between 0 and 8820. The integer corresponds to a subreddit depending on the Unique_ID map being used in our program which is used as the starting vertex for the BFS. The traversal will then be printed on the screen with both the subreddit names along with their unique_IDs. Please note that there will be some subreddits with no outgoing edges (which is what is used in the BFS) and hence will have no connections.
 - If the user chooses option 2, they will be prompted to enter 2 integers. Similar to the BFS, the integers are the Unique IDs corresponsing to subreddits. The first integer is used as the starting node which is used in the Djikstra's shortest path which returns a vector of distances. The second subreddit input is used as a index in the vector to output what the shortest distance between the two chosen subreddits is given that there is a way to go to the target subreddit from the source. Please note, that the 'distance' returned by the Djikstra algorithm provides an estimation of how well they might feel about their desired subreddit. The lower the estimation is, the more enjoyable the user might feel about the destination subreddit.  
 - If the user chooses option 3, they will be prompted to enter 2 integers. The first integer is the accuracy factor used in the Page Rank. The second integer is the unique ID of a subreddit. The Page Rank value of this subreddit will then be displayed on the screen. The page rank value gives us the probability of visiting each subreddit within the dataset and so higher the page rank value, higher the probability of an user ending up there. The higher the accuracy factor is, the more accurate the prediction will be. Please note, that higher the accuracy factor, the more time will be taken to run the program. Hence please limit the accuracy factor to a value between 0 and 10. 
+- If the user chooses option 4, they will be prompted to enter the max number of iterations using which page rank algorithm will be executed on the dataset to get the most popular subreddit. 
+- To execute the program again, rerun the commands mentioned above
 
 ### How to run the test cases 
 
@@ -40,4 +44,11 @@ We have compiled a few test cases to test our algorithms and traversals which ca
 - The output on the screen will inform you whether all the test cases and assertions have passed or not. There are [] test cases and [] assertions
 
 ## References 
+- https://www.youtube.com/watch?v=P8Kt6Abq_rM
+- https://www.geeksforgeeks.org/page-rank-algorithm-implementation/
+- https://www.geeksforgeeks.org/dijkstras-shortest-path-algorithm-using-priority_queue-stl/
+- https://www.youtube.com/watch?v=pVfj6mxhdMw&t=34s
+- https://www.geeksforgeeks.org/breadth-first-search-or-bfs-for-a-graph/
+
+
 
