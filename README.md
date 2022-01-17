@@ -1,3 +1,5 @@
+# This project was cloned from my University repository after the Professor's permission)
+
 # CS225 Final Project 
 
 ## Group Members 
